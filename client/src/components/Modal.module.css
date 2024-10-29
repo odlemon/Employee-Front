@@ -1,0 +1,65 @@
+/* Modal Styles */
+.modal-wrapper {
+    max-width: 1000px;
+    width: 1000px;
+    background-color: #ef4444 !important;
+    /* You can adjust the width here */
+}
+
+.modal-content {
+    position: relative;
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.modal-close-button {
+    position: absolute;
+    top: 0;
+    right: 1rem;
+    color: #ef4444; /* red-500 */
+}
+
+.modal-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #4A4A4A;
+    margin-top: -1rem;
+    margin-bottom: 1.5rem;
+}
+
+.modal-form {
+    display: flex;
+    gap: 1rem;
+}
+
+.modal-form input {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid #d1d5db; /* gray-300 */
+    border-radius: 0.375rem; /* rounded-md */
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.modal-form input:focus {
+    outline: none;
+    border-color: #3b82f6; /* blue-500 */
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.5); /* blue-500 */
+}
+
+.branch-input {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.branch-input input {
+    width: 100%;
+}
+
+.modal-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+}

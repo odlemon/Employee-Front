@@ -1,0 +1,47 @@
+
+  @media (max-width: 768px) {
+    .table-container th,
+    .table-container td {
+      padding: 0.75rem;
+    }
+  
+    .table-container th:nth-child(3),
+    .table-container td:nth-child(3) {
+      text-align: center;
+    }
+  
+    .actions {
+      display: flex;
+      justify-content: center;
+      gap: 0.5rem;
+    }
+ 
+    .table-wrapper {
+      overflow-x: auto;
+    }
+  
+    .table-container {
+      width: 100%;
+      display: block;
+      overflow-x: auto;
+    }
+  
+    .table-container th,
+    .table-container td {
+      display: block;
+      width: 100%;
+      box-sizing: border-box;
+      text-align: left;
+    }
+  
+    .table-container td {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+  
+    .table-container td.actions {
+      justify-content: flex-end;
+    }
+  }
+  

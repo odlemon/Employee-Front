@@ -1,0 +1,46 @@
+.container {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    display: flex;
+    gap: 1rem;
+  }
+  
+  .select {
+    padding: 0.5rem;
+    border: 1px solid #d1d5db;
+    border-radius: 0.375rem;
+  }
+  
+  @media (max-width: 640px) {
+    .select {
+      padding: 0.25rem;
+      font-size: 0.870rem;
+      width: 70px; 
+      margin-right: 5px;
+    }
+
+    .option {
+      padding: 0.25rem; 
+      font-size: 0.870rem; 
+      width: 70px;
+    }
+  
+    .container {
+      gap: 1rem; 
+      top: 0.5rem; 
+      right: 0.5rem; 
+    }
+
+    .button {
+      padding: 0.5rem;
+      font-size: 0.675rem; 
+      width: 120px; 
+      height: 40px; 
+    }
+
+    .icon {
+      font-size: 1rem;
+    }
+  }
+  

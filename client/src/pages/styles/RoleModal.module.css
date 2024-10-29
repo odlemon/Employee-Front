@@ -1,0 +1,73 @@
+@media (max-width: 640px) {
+.modal {
+    width: 75px !important;
+    max-width: 64rem; 
+    background-color: #fff;
+    padding: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    position: relative;
+  }
+  
+  .modalCloseButton {
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #ff5a5a;
+    transition: color 0.3s ease;
+  }
+  
+  .modalCloseButton:hover {
+    color: #ff1a1a;
+  }
+  
+  .modalContent {
+    padding: 1.5rem;
+  }
+  
+  .modalInput {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    transition: border-color 0.3s ease;
+  }
+  
+  .modalInput:focus {
+    border-color: #3182ce;
+    outline: none;
+  }
+  
+  .modalButton {
+    background-color: #3182ce;
+    color: white;
+    padding: 0.75rem 1.5rem;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .modalButton:hover {
+    background-color: #2b6cb0;
+  }
+  
+  .modalPermissions {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+  
+  @media (max-width: 768px) {
+    .modalWrapper {
+      width: 90%;
+      padding: 1rem;
+    }
+  
+    .modalPermissions {
+      grid-template-columns: 1fr;
+    }
+  }
+}
