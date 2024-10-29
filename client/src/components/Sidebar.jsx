@@ -11,7 +11,7 @@ import {
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useLocation } from "react-router-dom";
 import { setOpenSidebar } from "../redux/slices/authSlice";
-import logo from "../assets/logo.jpg";
+import logo from "../assets/logo.png";
 import BranchProgressModal from "./BranchProgressModal";
 import { usePermissions } from "../utils/PermissionsContext";
 

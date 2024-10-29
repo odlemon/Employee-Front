@@ -6,7 +6,7 @@ import { Button, Loading, Textbox } from "../components";
 import { useLoginMutation } from "../redux/slices/api/authApiSlice";
 import { setCredentials } from "../redux/slices/authSlice";
 import { useEffect } from "react";
-import logo from "../assets/logo-bg.png"; 
+import logo from "../assets/logo.png"; 
 
 const Login = () => {
   const { user } = useSelector((state) => state.auth);
@@ -41,7 +41,7 @@ const Login = () => {
         <div className='h-full w-full lg:w-2/3 flex flex-col items-center justify-center'>
           <div className='w-full md:max-w-lg 2xl:max-w-3xl flex flex-col items-center justify-center gap-5 md:gap-y-10 2xl:-mt-20'>
             <span className='flex gap-1 py-1 px-3 border rounded-full text-sm md:text-base dark:border-gray-700 dark:text-blue-400 border-gray-300 text-gray-600'>
-              Manage all your task in one place!
+              Manage all your employees in one place!
             </span>
             <p className='flex flex-col gap-0 md:gap-4 text-4xl md:text-6xl 2xl:text-7xl font-black text-center dark:text-gray-400 text-blue-700'>
             <img src={logo} alt="TaskMe Logo" className="w-21 h-18" /> 
