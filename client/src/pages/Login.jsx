@@ -5,7 +5,7 @@ import { toast } from "sonner";
 import { Button, Loading, Textbox } from "../components";
 import { useLoginMutation } from "../redux/slices/api/authApiSlice";
 import { setCredentials } from "../redux/slices/authSlice";
-import { useEffect, useState } from "react";
+import { useEffect, useLayoutEffect, useState } from "react";
 import logo from "../assets/logo.png";
 
 const Login = () => {
@@ -37,6 +37,10 @@ const Login = () => {
       console.error("Geolocation is not supported by this browser.");
     }
   };
+
+  useEffect(() => {
+    
+  })
 
   useEffect(() => {
     fetchGeolocation();

@@ -168,28 +168,36 @@ const AddUser = ({ open, setOpen, userData, roles, isLoadingRoles, branch }) => 
           </div>
 
           <div className="mt-2 flex flex-col gap-6">
-            <Textbox
-              placeholder="Full name"
-              type="text"
-              name="name"
-              label="Full Name"
-              className="w-full rounded"
-              register={register("name", {
-                required: "Full name is required!",
-              })}
-              error={errors.name ? errors.name.message : ""}
-            />
-            <Textbox
-              placeholder="Title"
-              type="text"
-              name="title"
-              label="Title"
-              className="w-full rounded"
-              register={register("title", {
-                required: "Title is required!",
-              })}
-              error={errors.title ? errors.title.message : ""}
-            />
+          <Textbox
+  placeholder="Full name"
+  type="text"
+  name="name"
+  label="Full Name"
+  className="w-full rounded"
+  register={register("name", {
+    required: "Full name is required!",
+    pattern: {
+      value: /^[A-Za-z\s]+$/,
+      message: "Full name must not contain numbers!",
+    },
+  })}
+  error={errors.name ? errors.name.message : ""}
+/>
+          <Textbox
+  placeholder="Title"
+  type="text"
+  name="title"
+  label="Title"
+  className="w-full rounded"
+  register={register("title", {
+    required: "Title is required!",
+    pattern: {
+      value: /^[A-Za-z\s]+$/,
+      message: "Title must not contain numbers!",
+    },
+  })}
+  error={errors.title ? errors.title.message : ""}
+/>
             <Textbox
               placeholder="Email Address"
               type="email"
