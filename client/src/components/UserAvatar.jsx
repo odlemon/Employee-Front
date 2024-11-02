@@ -21,24 +21,31 @@ const UserAvatar = () => {
 
   const logoutHandler = async () => {
     try {
-      // Assuming user is stored in state or context
-      const userId = user._id; // Replace with the actual way you're accessing the user ID
-  
-      // Pass the user ID in the request
+      const userId = user._id; // Assuming user ID is accessible here
+      console.log("my user is", user)
+      console.log("Logging out user with ID:", userId); // Log user ID being sent
       await logoutUser({ id: userId }).unwrap();
-  
-      // Dispatch logout action and navigate to login
       dispatch(logout());
       navigate("/log-in");
     } catch (error) {
       toast.error("Something went wrong. Please try again.");
+      console.error("Logout error:", error); // Log any errors during logout
     }
   };
-  
+
+  const handleProfileClick = () => {
+    console.log("Opening profile modal with user data:", user); // Log user data when opening profile modal
+    setOpen(true);
+  };
+
+  const handleChangePasswordClick = () => {
+    console.log("Opening change password modal for user:", user); // Log user data when opening change password modal
+    setOpenPassword(true);
+  };
 
   return (
     <>
-      <div className="">
+      <div>
         <Menu as="div" className="relative inline-block text-left">
           <div>
             <Menu.Button className="w-10 h-10 2xl:w-12 2xl:h-12 items-center justify-center rounded-full bg-green-600">
@@ -70,7 +77,7 @@ const UserAvatar = () => {
                 <Menu.Item>
                   {({ active }) => (
                     <button
-                      onClick={() => setOpen(true)}
+                      onClick={handleProfileClick}
                       className={`text-gray-700 dark:text-gray-300 group flex w-full items-center rounded-md px-2 py-2 text-base`}
                     >
                       <FaUser className="mr-2" aria-hidden="true" />
@@ -82,7 +89,7 @@ const UserAvatar = () => {
                 <Menu.Item>
                   {({ active }) => (
                     <button
-                      onClick={() => setOpenPassword(true)}
+                      onClick={handleChangePasswordClick}
                       className={`text-gray-700 dark:text-gray-300 group flex w-full items-center rounded-md px-2 py-2 text-base`}
                     >
                       <FaUserLock className="mr-2" aria-hidden="true" />

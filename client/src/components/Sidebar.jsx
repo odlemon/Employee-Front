@@ -15,8 +15,6 @@ import logo from "../assets/logo.png";
 import BranchProgressModal from "./BranchProgressModal";
 import { usePermissions } from "../utils/PermissionsContext";
 
-// Move usePermissions inside the Sidebar component
-
 const linkData = [
   {
     label: "Organization Overview",
@@ -55,7 +53,7 @@ const linkData = [
   },
   {
     label: "Branch Progress",
-    link: "/taeam",
+    link: "/team",
     icon: <FaProjectDiagram />,
     permission: "can update branch progress",
   },
@@ -63,7 +61,7 @@ const linkData = [
     label: "Employees",
     link: "/team",
     icon: <FaUsers />,
- 
+    isAdminOnly: true, // Only visible to admin users
   },
   {
     label: "Trash",
@@ -80,21 +78,19 @@ const Sidebar = () => {
   const location = useLocation();
   const path = location.pathname.split("/")[1];
 
-  // Call usePermissions hook inside the component body
   const { permissions } = usePermissions();
 
   const closeSidebar = () => {
     dispatch(setOpenSidebar(false));
   };
 
-  // Filter links based on user permissions
+  // Filter links based on user permissions and admin status
   const filteredLinks = linkData.filter(
     (link) =>
-      !link.permission || // If no permission is required, show the link
-      permissions.includes(link.permission) // Check if user has the required permission
+      (!link.permission || permissions.includes(link.permission)) && // Permission check
+      (!link.isAdminOnly || user?.isAdmin) // Admin-only check
   );
 
-  // Limit links for non-admin users
   const sidebarLinks = user?.isAdmin ? filteredLinks : filteredLinks.slice(0, 15);
 
   const NavLink = ({ el }) => {

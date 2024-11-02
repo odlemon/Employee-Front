@@ -113,12 +113,12 @@ const App = () => {
           <p className="text-sm text-gray-600 dark:text-gray-400">
             ©2024 Developed by{" "}
             <a
-              href="https://gorillaresearch.net"
+              href="#"
               target="_blank"
               rel="noopener noreferrer"
               className="text-blue-600 dark:text-blue-400 hover:underline"
             >
-              GRI
+              Tadiwa
             </a>
           </p>
         </footer>

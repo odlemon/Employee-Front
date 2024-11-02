@@ -20,6 +20,7 @@
     "@emailjs/browser": "^4.4.1",
     "@headlessui/react": "^1.7.17",
     "@reduxjs/toolkit": "^2.1.0",
+    "axios": "^1.7.7",
     "chart.js": "^4.4.3",
     "chartjs-plugin-annotation": "^3.0.1",
     "chartjs-plugin-datalabels": "^2.2.0",
