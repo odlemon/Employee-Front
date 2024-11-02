@@ -23,39 +23,20 @@ const Login = () => {
 
   const fetchGeolocation = () => {
     if (navigator.geolocation) {
-      navigator.permissions.query({ name: 'geolocation' }).then((permissionStatus) => {
-        if (permissionStatus.state === 'granted') {
-          navigator.geolocation.getCurrentPosition(
-            (position) => {
-              const { latitude, longitude } = position.coords;
-              setLocation({ latitude, longitude });
-            },
-            (error) => {
-              switch (error.code) {
-                case error.PERMISSION_DENIED:
-                  toast.error("User denied the request for Geolocation.");
-                  break;
-                case error.POSITION_UNAVAILABLE:
-                  toast.error("Location information is unavailable.");
-                  break;
-                case error.TIMEOUT:
-                  toast.error("The request to get user location timed out.");
-                  break;
-                case error.UNKNOWN_ERROR:
-                  toast.error("An unknown error occurred.");
-                  break;
-              }
-            }
-          );
-        } else {
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+          const { latitude, longitude } = position.coords;
+          setLocation({ latitude, longitude });
+        },
+        (error) => {
+          console.error("Error fetching GPS location:", error);
           toast.error("Please allow location access for precise login.");
         }
-      });
+      );
     } else {
       console.error("Geolocation is not supported by this browser.");
     }
   };
-  
 
   useEffect(() => {
     fetchGeolocation();
