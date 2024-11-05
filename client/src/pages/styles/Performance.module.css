@@ -2,75 +2,106 @@
   text-align: center !important; 
 }
 
+.modal {
+  padding: 0.5rem;
+  margin: 0;
+  width: 90%; 
+  height: 730px; /* Universal height */
+  overflow-y: auto; /* Enable vertical scrolling */
+  overflow-x: hidden; /* Prevent horizontal scrolling */
+  border-radius: 0.375rem; /* Keep rounded corners */
+}
 
+.chart {
+  width: 100% !important;
+  height: 450px !important;
+}
 
-  @media (max-width: 640px) {
-
-    .overlay {
-        position: fixed;
-        top: 50% !important;
-        left: 50% !important;
-        transform: translate(-50%, -50%);
-        width: 400px !important;
-        height: 800px !important;
-        border-radius: 8px !important;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        background-color: rgba(0, 0, 0, 0.5);
-        z-index: 1000; 
-      }
-
-    .modal {
-      padding: 0.5rem; 
-      margin: 0; 
-      width: 90%;
-      height: 730px !important;
-    }
-
-    .date {
-        padding: 0.5rem; 
-        margin: 0; 
-        width: 100px !important; 
-        height: 35px !important; 
-      }
-  
-    .title {
-      font-size: 1rem !important; 
-    }
-
-    .close {
-        width: 10px !important;
-        margin-right: 20px !important;
-        margin-top: -30px !important;
-      }
-
-      .chart {
-        width: 330px !important;
-       height: 400px !important;
-      }
-  
-    .reset {
-      padding: 0.5rem;
-      font-size: 0.975rem;
-    }
-
-    .export {
-        padding: 0.5rem; 
-        font-size: 0.975rem; 
-        margin-top: 30px !important;
-        width: 200px !important;
-        height: 40px !important;
-      }
-  
-    .close-button {
-      font-size: 1.5rem; 
-    }
+/* Small Devices (Max Width: 430px) */
+@media (max-width: 430px) {
+  .title {
+    font-size: 1rem !important;
   }
 
+  .close {
+    width: 2px !important;
+    margin-right: 10px !important;
+    margin-top: -30px !important;
+  }
 
-  @media (min-width: 641px) and (max-width: 767px) {
+  .chart {
+    width: 330px !important;
+    height: 400px !important;
+  }
 
+  .reset, .export {
+    padding: 0.5rem;
+    font-size: 0.975rem;
+  }
+
+  .export {
+    margin-top: 30px !important;
+    width: 200px !important;
+    height: 40px !important;
+  }
+
+  .close-button {
+    font-size: 1.5rem;
+  }
+}
+
+/* Medium Devices (Max Width: 640px) */
+@media (max-width: 640px) {
+  .overlay {
+    position: fixed;
+    top: 50% !important;
+    left: 50% !important;
+    transform: translate(-50%, -50%);
+    width: 400px !important;
+    height: 800px !important;
+    border-radius: 8px !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+  }
+
+  .modal {
+    padding: 0.5rem;
+    margin: 0;
+    width: 90%;
+    height: 730px !important;
+    overflow-y: auto; /* Enable vertical scrolling universally */
+    overflow-x: hidden;
+    border-radius: 0.375rem;
+  }
+
+  .comment {
+    width: 340px !important;
+  }
+
+  .date {
+    padding: 0.5rem;
+    margin: 0;
+    width: 100px !important;
+    height: 35px !important;
+  }
+
+  .close {
+    width: 10px !important;
+    margin-right: 20px !important;
+    margin-top: -30px !important;
+  }
+
+  .chart {
+    width: 330px !important;
+    height: 400px !important;
+  }
+}
+
+/* Devices Between 641px and 767px */
+@media (min-width: 641px) and (max-width: 767px) {
   .overlay {
     position: fixed;
     top: 50% !important;
@@ -86,11 +117,18 @@
     z-index: 1000;
   }
 
+  .comment {
+    width: 380px !important;
+  }
+
   .modal {
     padding: 1rem;
     margin: 0.5rem;
     width: 95%; 
     height: 750px;
+    overflow-y: auto; /* Enable vertical scrolling */
+    overflow-x: hidden; /* Prevent horizontal scrolling */
+    border-radius: 0.375rem; 
   }
 
   .date {
@@ -114,150 +152,150 @@
     height: 450px;
   }
 
-  .reset {
+  .reset, .export {
     padding: 0.5rem; 
-    font-size: 0.975rem; 
+    font-size: 0.975rem;
   }
 
   .export {
-      padding: 0.5rem; 
-      font-size: 0.975rem; 
-      margin-top: 3px !important;
-      width: 200px !important;
-      height: 40px !important;
-    }
+    margin-top: 3px !important;
+    width: 200px !important;
+    height: 40px !important;
+  }
 
   .close-button {
     font-size: 1.7rem;
   }
 }
 
+/* Devices Between 767px and 1169px */
 @media (min-width: 767px) and (max-width: 1169px) {
-
-    .overlay {
-      position: fixed;
-      top: 50% !important;
-      left: 50% !important;
-      transform: translate(-50%, -50%);
-      width: 450px !important;
-      height: 850px !important;
-      border-radius: 8px !important;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background-color: rgba(0, 0, 0, 0.5);
-      z-index: 1000;
-    }
-  
-    .modal {
-      padding: 1rem;
-      margin: 0.5rem;
-      width: 100% !important; 
-      height: 750px;
-    }
-  
-    .date {
-      padding: 0.75rem;
-      width: 120px;
-      height: 40px;
-    }
-  
-    .title {
-      font-size: 1.1rem;
-    }
-  
-    .close {
-      width: 14px;
-      margin-right: 25px;
-      margin-top: -20px;
-    }
-  
-    .chart {
-      width: 350px;
-      height: 450px;
-    }
-  
-    .reset {
-      padding: 0.5rem; 
-      font-size: 0.975rem;
-    }
-  
-    .export {
-        padding: 0.5rem; 
-        font-size: 0.975rem;
-        margin-top: 3px !important;
-        width: 200px !important;
-        height: 40px !important;
-      }
-  
-    .close-button {
-      font-size: 1.7rem;
-    }
+  .overlay {
+    position: fixed;
+    top: 50% !important;
+    left: 50% !important;
+    transform: translate(-50%, -50%);
+    width: 450px !important;
+    height: 850px !important;
+    border-radius: 8px !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
   }
-  
-      
-  @media (min-width: 1169px) and (max-width: 1971px) {
 
-    .overlay {
-      position: fixed;
-      top: 50% !important;
-      left: 50% !important;
-      transform: translate(-50%, -50%);
-      width: 950px !important;
-      height: 850px !important;
-      border-radius: 8px !important;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background-color: rgba(0, 0, 0, 0.5);
-      z-index: 1000;
-    }
-  
-    .modal {
-      padding: 1rem;
-      margin: 0.5rem;
-      width: 100% !important; 
-      height: 750px;
-    }
-  
-    .date {
-      padding: 0.75rem;
-      width: 120px;
-      height: 40px;
-    }
-  
-    .title {
-      font-size: 1.1rem;
-    }
-  
-    .close {
-      width: 14px;
-      margin-right: 25px;
-      margin-top: -20px;
-    }
-  
-    .chart {
-      width: 100% !important;
-      height: 450px !important;
-    }
-  
-    .reset {
-      padding: 0.5rem; 
-      font-size: 0.975rem;
-    }
-  
-    .export {
-        padding: 0.5rem; 
-        font-size: 0.975rem; 
-        margin-top: 3px !important;
-        width: 200px !important;
-        height: 40px !important;
-      }
-  
-    .close-button {
-      font-size: 1.7rem;
-    }
+  .modal {
+    padding: 1rem;
+    margin: 0.5rem;
+    width: 100% !important; 
+    height: 750px;
+    overflow-y: auto; /* Enable vertical scrolling */
+    overflow-x: hidden; /* Prevent horizontal scrolling */
+    border-radius: 0.375rem; 
   }
-  
-            
 
+  .comment {
+    width: 380px !important;
+  }
+
+  .date {
+    padding: 0.75rem;
+    width: 120px;
+    height: 40px;
+  }
+
+  .title {
+    font-size: 1.1rem;
+  }
+
+  .close {
+    width: 14px;
+    margin-right: 25px;
+    margin-top: -20px;
+  }
+
+  .chart {
+    width: 350px;
+    height: 450px;
+  }
+
+  .reset, .export {
+    padding: 0.5rem;
+    font-size: 0.975rem;
+  }
+
+  .export {
+    margin-top: 3px !important;
+    width: 200px !important;
+    height: 40px !important;
+  }
+
+  .close-button {
+    font-size: 1.7rem;
+  }
+}
+
+/* Large Devices (Min Width: 1169px) */
+@media (min-width: 1169px) and (max-width: 1971px) {
+  .overlay {
+    position: fixed;
+    top: 50% !important;
+    left: 50% !important;
+    transform: translate(-50%, -50%);
+    width: 950px !important;
+    height: 850px !important;
+    border-radius: 8px !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+  }
+
+  .modal {
+    padding: 1rem;
+    margin: 0.5rem;
+    width: 100% !important; 
+    height: 750px;
+    overflow-y: auto; /* Enable vertical scrolling */
+    overflow-x: hidden; /* Prevent horizontal scrolling */
+    border-radius: 0.375rem; 
+  }
+
+  .date {
+    padding: 0.75rem;
+    width: 120px;
+    height: 40px;
+  }
+
+  .title {
+    font-size: 1.1rem;
+  }
+
+  .close {
+    width: 14px;
+    margin-right: 25px;
+    margin-top: -20px;
+  }
+
+  .chart {
+    width: 100% !important;
+    height: 450px !important;
+  }
+
+  .reset, .export {
+    padding: 0.5rem;
+    font-size: 0.975rem;
+  }
+
+  .export {
+    margin-top: 3px !important;
+    width: 200px !important;
+    height: 40px !important;
+  }
+
+  .close-button {
+    font-size: 1.7rem;
+  }
+}
