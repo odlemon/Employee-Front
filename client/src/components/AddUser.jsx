@@ -15,17 +15,17 @@ import { useGetBranchesQuery } from "../redux/slices/api/branchApiSlice";
 const AddUser = ({ open, setOpen, userData, roles, isLoadingRoles, branch }) => {
   let defaultValues = userData ?? {};
   const { user } = useSelector((state) => state.auth);
-  const { data: departments, isLoading: isLoadingDepartments } = useGetAllDepartmentsQuery();
   const { permissions } = usePermissions();
   const [profilePicture, setProfilePicture] = useState(null);
   const [selectedRole, setSelectedRole] = useState(null);
   const [selectedBranch, setSelectedBranch] = useState(userData?.branch || null);
-  const { data: branches } = useGetBranchesQuery(); 
+  const { data: branches } = useGetBranchesQuery();
 
   const { register, handleSubmit, formState: { errors }, watch } = useForm({
     defaultValues: {
       ...defaultValues,
       department: userData?.department || "",
+      gender: userData?.gender || "",
     },
   });
   
@@ -74,7 +74,6 @@ const AddUser = ({ open, setOpen, userData, roles, isLoadingRoles, branch }) => 
     }
   }, [watchedRole, roles]);
 
-  // Function to create and download a .txt file with user credentials
   const downloadCredentials = (email, password) => {
     const credentials = `Email: ${email}\nPassword: ${password}`;
     const blob = new Blob([credentials], { type: "text/plain" });
@@ -116,7 +115,6 @@ const AddUser = ({ open, setOpen, userData, roles, isLoadingRoles, branch }) => 
           password: data?.email,
         }).unwrap();
 
-        // Download credentials as a text file
         downloadCredentials(res.email, res.password);
         
         toast.success("New User added successfully");
@@ -135,7 +133,6 @@ const AddUser = ({ open, setOpen, userData, roles, isLoadingRoles, branch }) => 
     setOpen(false);
   };
 
-  console.log("user data", userData);
   return (
     <>
       <ModalWrapper open={open} setOpen={setOpen}>
@@ -149,55 +146,44 @@ const AddUser = ({ open, setOpen, userData, roles, isLoadingRoles, branch }) => 
                 {userData ? "UPDATE PROFILE" : "ADD NEW USER"}
               </Dialog.Title>
             </div>
-            <button  type="button" className="text-red-500 hover:text-red-700" onClick={handleClose}>
-              <svg
-                className="w-10 h-10"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M6 18L18 6M6 6l12 12"
-                />
+            <button type="button" className="text-red-500 hover:text-red-700" onClick={handleClose}>
+              <svg className="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12"/>
               </svg>
             </button>
           </div>
 
           <div className="mt-2 flex flex-col gap-6">
-          <Textbox
-  placeholder="Full name"
-  type="text"
-  name="name"
-  label="Full Name"
-  className="w-full rounded"
-  register={register("name", {
-    required: "Full name is required!",
-    pattern: {
-      value: /^[A-Za-z\s]+$/,
-      message: "Full name must not contain numbers!",
-    },
-  })}
-  error={errors.name ? errors.name.message : ""}
-/>
-          <Textbox
-  placeholder="Title"
-  type="text"
-  name="title"
-  label="Title"
-  className="w-full rounded"
-  register={register("title", {
-    required: "Title is required!",
-    pattern: {
-      value: /^[A-Za-z\s]+$/,
-      message: "Title must not contain numbers!",
-    },
-  })}
-  error={errors.title ? errors.title.message : ""}
-/>
+            <Textbox
+              placeholder="Full name"
+              type="text"
+              name="name"
+              label="Full Name"
+              className="w-full rounded"
+              register={register("name", {
+                required: "Full name is required!",
+                pattern: {
+                  value: /^[A-Za-z\s]+$/,
+                  message: "Full name must not contain numbers!",
+                },
+              })}
+              error={errors.name ? errors.name.message : ""}
+            />
+            <Textbox
+              placeholder="Title"
+              type="text"
+              name="title"
+              label="Title"
+              className="w-full rounded"
+              register={register("title", {
+                required: "Title is required!",
+                pattern: {
+                  value: /^[A-Za-z\s]+$/,
+                  message: "Title must not contain numbers!",
+                },
+              })}
+              error={errors.title ? errors.title.message : ""}
+            />
             <Textbox
               placeholder="Email Address"
               type="email"
@@ -209,6 +195,37 @@ const AddUser = ({ open, setOpen, userData, roles, isLoadingRoles, branch }) => 
               })}
               error={errors.email ? errors.email.message : ""}
             />
+
+            {/* Department Dropdown */}
+            <div className="flex flex-col">
+              <label className="text-sm font-medium text-gray-700">Department</label>
+              <select
+                className="w-full rounded border-gray-300"
+                {...register("department", { required: "Department is required!" })}
+              >
+                <option value="">Select Department</option>
+                <option value="Finance">Finance</option>
+                <option value="IT">IT</option>
+                <option value="HR">HR</option>
+                <option value="Marketing">Marketing</option>
+              </select>
+              {errors.department && <span className="text-red-500 text-sm">{errors.department.message}</span>}
+            </div>
+
+            {/* Gender Dropdown */}
+            <div className="flex flex-col">
+              <label className="text-sm font-medium text-gray-700">Gender</label>
+              <select
+                className="w-full rounded border-gray-300"
+                {...register("gender", { required: "Gender is required!" })}
+              >
+                <option value="">Select Gender</option>
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+                <option value="Other">Other</option>
+              </select>
+              {errors.gender && <span className="text-red-500 text-sm">{errors.gender.message}</span>}
+            </div>
           </div>
 
           {isLoading || isUpdating ? (
@@ -222,7 +239,6 @@ const AddUser = ({ open, setOpen, userData, roles, isLoadingRoles, branch }) => 
                 className="bg-green-600 px-8 text-sm font-semibold text-white hover:bg-green-700 sm:w-auto"
                 label="Submit"
               />
-
               <Button
                 type="button"
                 className="bg-white px-5 text-sm font-semibold text-gray-900 sm:w-auto"

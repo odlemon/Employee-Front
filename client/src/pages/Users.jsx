@@ -108,6 +108,8 @@ const Users = () => {
         <th className='py-2'>Full Name</th>
         <th className='py-2'>Title</th>
         <th className='py-2'>Email</th>
+        <th className='py-2'>Department</th>
+        <th className='py-2'>Gender</th>
         <th className='py-2'>Active</th>
         <th className='py-2'>Actions</th>
       </tr>
@@ -139,6 +141,8 @@ const Users = () => {
       </td>
       <td className='p-2'>{user.title}</td>
       <td className='p-2'>{user.email}</td>
+      <td className='p-2'>{user.department}</td>
+      <td className='p-2'>{user.gender}</td>
       <td>
         <button
           onClick={() => userStatusClick(user)}

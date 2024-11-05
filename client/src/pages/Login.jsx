@@ -38,9 +38,7 @@ const Login = () => {
     }
   };
 
-  useEffect(() => {
-    
-  })
+
 
   useEffect(() => {
     fetchGeolocation();

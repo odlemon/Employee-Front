@@ -1,5 +1,5 @@
 import { Menu, Transition } from "@headlessui/react";
-import { Fragment, useState } from "react";
+import { Fragment, useState, useEffect   } from "react";
 import { FaUser, FaUserLock } from "react-icons/fa";
 import { IoLogOutOutline } from "react-icons/io5";
 import { useDispatch, useSelector } from "react-redux";
@@ -18,18 +18,38 @@ const UserAvatar = () => {
   const [logoutUser] = useLogoutMutation();
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const [location, setLocation] = useState(null);
+
+  const fetchGeolocation = () => {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+          const { latitude, longitude } = position.coords;
+          setLocation({ latitude, longitude });
+        },
+        (error) => {
+          console.error("Error fetching GPS location:", error);
+          toast.error("Please allow location access for precise login.");
+        }
+      );
+    } else {
+      console.error("Geolocation is not supported by this browser.");
+    }
+  };
+
+  useEffect(() => {
+    fetchGeolocation();
+  }, []);
 
   const logoutHandler = async () => {
     try {
       const userId = user._id; // Assuming user ID is accessible here
-      console.log("my user is", user)
-      console.log("Logging out user with ID:", userId); // Log user ID being sent
-      await logoutUser({ id: userId }).unwrap();
+
+      await logoutUser({ id: userId, location: location }).unwrap();
       dispatch(logout());
       navigate("/log-in");
-    } catch (error) {
-      toast.error("Something went wrong. Please try again.");
-      console.error("Logout error:", error); // Log any errors during logout
+    } catch (err) {
+      toast.error(err?.data?.message || err.error);
     }
   };
 
