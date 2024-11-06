@@ -222,7 +222,7 @@ const AddUser = ({ open, setOpen, userData, roles, isLoadingRoles, branch }) => 
                 <option value="">Select Gender</option>
                 <option value="Male">Male</option>
                 <option value="Female">Female</option>
-                <option value="Other">Other</option>
+              
               </select>
               {errors.gender && <span className="text-red-500 text-sm">{errors.gender.message}</span>}
             </div>
